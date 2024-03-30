@@ -21,3 +21,5 @@ test/tmp_benchmarks
 benchmarks/*.csv
 __pycache__
 *runtimeconfig.json
+
+result

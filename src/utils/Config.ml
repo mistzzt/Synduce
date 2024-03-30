@@ -163,15 +163,9 @@ let using_cvc4_tuples = ref false
 (** Don't generate a special grammar for constants if true. *)
 let no_grammar_for_constants = ref true
 
-let cvc4_binary_path =
-  try Some (FileUtil.which "cvc4") with
-  | _ -> None
-;;
+let cvc4_binary_path = DepPath.cvc4_binary_path
 
-let cvc5_binary_path =
-  try Some (FileUtil.which "cvc5") with
-  | _ -> None
-;;
+let cvc5_binary_path = DepPath.cvc5_binary_path
 
 let using_cvc5 () =
   (Option.is_some cvc5_binary_path && not !use_cvc4) || Option.is_none cvc4_binary_path
@@ -195,10 +189,7 @@ let cvc_binary_path () =
       | None -> failwith "CVC5 and CVC4 not found."))
 ;;
 
-let z3_binary_path =
-  try FileUtil.which "z3" with
-  | _ -> failwith "Z3 not found (using 'which z3')."
-;;
+let z3_binary_path = DepPath.z3_binary_path
 
 let yices_binary_path =
   try Some (FileUtil.which "yices-smt2") with
